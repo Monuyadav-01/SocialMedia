@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SocialMedia</string>
+    <string name="made_by_monu">Made By Monu</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">PassWord</string>
+    <string name="resister">Resister</string>
+</resources>
