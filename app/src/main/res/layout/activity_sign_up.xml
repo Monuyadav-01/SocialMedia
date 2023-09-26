@@ -84,7 +84,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="wrap_content"
             android:visibility="visible" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -94,14 +94,16 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:background="@drawable/resister_background"
         android:contentDescription="@string/resister"
         android:text="@string/resister"
-        android:background="@drawable/resister_background"
         app:layout_constraintEnd_toEndOf="@+id/signUpPassword"
         app:layout_constraintStart_toStartOf="@+id/signUpPassword"
         app:layout_constraintTop_toBottomOf="@+id/signUpPassword">
 
     </androidx.appcompat.widget.AppCompatButton>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
