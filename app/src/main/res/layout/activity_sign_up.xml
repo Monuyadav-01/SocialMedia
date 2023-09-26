@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
@@ -94,16 +95,32 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:background="@drawable/resister_background"
+        android:background="@drawable/background_btn"
+        android:elevation="50dp"
         android:contentDescription="@string/resister"
         android:text="@string/resister"
+        android:textColor="@color/pink"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/signUpPassword"
         app:layout_constraintStart_toStartOf="@+id/signUpPassword"
         app:layout_constraintTop_toBottomOf="@+id/signUpPassword">
 
     </androidx.appcompat.widget.AppCompatButton>
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/background_btn"
+        android:text="@string/login"
+        android:textColor="@color/pink"
+        android:textSize="10sp"
+        android:elevation="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/resister"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/resister"
+        app:layout_constraintTop_toBottomOf="@+id/resister" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

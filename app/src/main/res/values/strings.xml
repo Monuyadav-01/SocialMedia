@@ -5,4 +5,12 @@
     <string name="email">Email</string>
     <string name="password">PassWord</string>
     <string name="resister">Resister</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="already_an_account_longin_here">Already an Account Longin here</string>
+    <string name="login_here"> Login Here ? </string>
+    <string name="login">Login</string>
+    <string name="create_a_new_account">Create a new Account</string>
 </resources>

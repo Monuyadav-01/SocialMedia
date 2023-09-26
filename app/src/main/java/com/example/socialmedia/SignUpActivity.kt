@@ -1,5 +1,6 @@
 package com.example.socialmedia
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -22,11 +23,10 @@ class SignUpActivity : AppCompatActivity() {
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
             uploadImage(uri, USER_PROFILE_IMAGE) {
-                if(it == null){
+                if (it == null) {
 
-                }
-                else{
-                    user.image= it
+                } else {
+                    user.image = it
                     binding.profileImage.setImageURI(uri)
                 }
             }
@@ -63,12 +63,8 @@ class SignUpActivity : AppCompatActivity() {
                         Firebase.firestore.collection(USER_NODE)
                             .document(Firebase.auth.currentUser!!.uid).set(user)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    this@SignUpActivity,
-                                    "Login",
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
+                                startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
+                                finish()
                             }
                     } else {
                         Toast.makeText(
@@ -82,6 +78,10 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.plusImage.setOnClickListener {
             launcher.launch("image/*")
+        }
+        binding.loginBtn.setOnClickListener {
+            startActivity(Intent(this@SignUpActivity,LoginActivity::class.java))
+            finish()
         }
     }
 
