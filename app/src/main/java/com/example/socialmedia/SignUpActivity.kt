@@ -14,7 +14,9 @@ import com.example.socialmedia.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -38,7 +40,31 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         user = User()
+        if (intent.hasExtra("MODE")) {
+            if (intent.getIntExtra("MODE", -1) == 1) {
+                binding.resister.text = "UPDATE PROFILE"
+
+                Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid)
+                    .get()
+                    .addOnSuccessListener {
+                        user = it.toObject<User>()!!
+                        if (!user.image.isNullOrEmpty()) {
+                            Picasso.get().load(user.image).into(binding.profileImage)
+                        }
+                    }
+            }
+        }
+
+
         binding.resister.setOnClickListener {
+            if(intent.hasExtra("MODE")){
+                if(intent.getIntExtra("MODE" ,-1) == 1){
+                    Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).set(user)
+                }
+            }
+         else{
+
+            }
             if (
                 (binding.signUpName.editText?.text.toString() == "") or
                 (binding.signUpEmail.editText?.text.toString() == "")
@@ -80,7 +106,7 @@ class SignUpActivity : AppCompatActivity() {
             launcher.launch("image/*")
         }
         binding.loginBtn.setOnClickListener {
-            startActivity(Intent(this@SignUpActivity,LoginActivity::class.java))
+            startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
             finish()
         }
     }
