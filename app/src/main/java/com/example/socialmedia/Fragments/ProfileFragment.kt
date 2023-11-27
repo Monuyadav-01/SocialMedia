@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.socialmedia.Models.User
-import com.example.socialmedia.SignUpActivity
+import com.example.socialmedia.RegisterActivity
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.databinding.FragmentProfileBinding
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -33,10 +34,10 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         binding.editProfile.setOnClickListener {
-            val intent = Intent(activity,SignUpActivity::class.java)
+            val intent = Intent(activity,RegisterActivity::class.java)
             intent.putExtra("MODE",1)
             activity?.startActivity(intent)
-            activity?.finish()
+
         }
         return binding.root
     }
@@ -47,7 +48,7 @@ class ProfileFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
+        FirebaseFirestore.getInstance().collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
             .addOnSuccessListener {
                 val user: User = it.toObject<User>()!!
                 binding.name.text = user.name

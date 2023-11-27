@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.createAcBtn.setOnClickListener {
-            val intent = Intent(this@LoginActivity, SignUpActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             else{
-                var user = User(binding.loginEmail.editText?.text.toString(),binding.loginPass.editText?.text.toString())
+                val user = User(binding.loginEmail.editText?.text.toString(),binding.loginPass.editText?.text.toString())
                 Firebase.auth.signInWithEmailAndPassword(user.email!! , user.password!!).addOnCompleteListener {
                     if(it.isSuccessful){
                         startActivity(Intent(this@LoginActivity,HomeActivity::class.java))

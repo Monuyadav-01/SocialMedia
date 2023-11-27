@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".RegisterActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -91,13 +90,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/resister"
+        android:id="@+id/sign_up_btn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:background="@drawable/background_btn"
-        android:elevation="50dp"
         android:contentDescription="@string/resister"
+        android:elevation="50dp"
         android:text="@string/resister"
         android:textColor="@color/pink"
         android:textSize="25sp"
@@ -113,14 +112,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:background="@drawable/background_btn"
+        android:elevation="50dp"
         android:text="@string/login"
         android:textColor="@color/pink"
-        android:textSize="10sp"
-        android:elevation="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/resister"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up_btn"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/resister"
-        app:layout_constraintTop_toBottomOf="@+id/resister" />
-
+        app:layout_constraintStart_toStartOf="@+id/sign_up_btn"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
