@@ -22,4 +22,7 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="bio">Bio</string>
     <string name="name1">Name</string>
+    <string name="viewpager">ViewPager</string>
+    <string name="upload_reels">Add Reel</string>
+    <string name="add_post">Add Post</string>
 </resources>

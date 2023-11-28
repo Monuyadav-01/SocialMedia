@@ -14,7 +14,7 @@
         android:name="com.example.socialmedia.Fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
-    <fragment
+    <dialog
         android:id="@+id/navigation_add"
         android:name="com.example.socialmedia.Fragments.AddFragment"
         android:label="fragment_add"

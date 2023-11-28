@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.socialmedia.Models.User
+import com.example.socialmedia.R
 import com.example.socialmedia.RegisterActivity
 import com.example.socialmedia.Utils.USER_NODE
+import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
@@ -20,6 +21,7 @@ import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +36,22 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         binding.editProfile.setOnClickListener {
-            val intent = Intent(activity,RegisterActivity::class.java)
-            intent.putExtra("MODE",1)
+            val intent = Intent(activity, RegisterActivity::class.java)
+            intent.putExtra("MODE", 1)
             activity?.startActivity(intent)
 
         }
+        viewPagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
+        viewPagerAdapter.addFragments(MyPostFragment(), "MY POST")
+        viewPagerAdapter.addFragments(MyReelsFragment(), "MY REELS")
+
+        binding.viewPager.adapter = viewPagerAdapter
+
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+
+
+
         return binding.root
     }
 
@@ -48,11 +61,12 @@ class ProfileFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        FirebaseFirestore.getInstance().collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
+        FirebaseFirestore.getInstance().collection(USER_NODE)
+            .document(Firebase.auth.currentUser!!.uid).get()
             .addOnSuccessListener {
                 val user: User = it.toObject<User>()!!
                 binding.name.text = user.name
-                if (!user.image.isNullOrEmpty()){
+                if (!user.image.isNullOrEmpty()) {
                     Picasso.get().load(user.image).into(binding.profileImage)
                 }
             }
