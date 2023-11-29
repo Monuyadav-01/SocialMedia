@@ -25,4 +25,8 @@
     <string name="viewpager">ViewPager</string>
     <string name="upload_reels">Add Reel</string>
     <string name="add_post">Add Post</string>
+    <string name="write_a_caption">Write a Caption</string>
+    <string name="share_a_post">Share a post</string>
+    <string name="your_post_may_appear_in_posts_and_can_be_seen_on_the_posts_may_be_tab_under_your_profile">Your Post may appear in Posts and can be seen on the posts may be tab under your profile</string>
+    <string name="cancel">cancel</string>
 </resources>
