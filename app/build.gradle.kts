@@ -63,6 +63,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("com.squareup.picasso:picasso:2.8")
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
+    implementation("com.makeramen:roundedimageview:2.3.0")
 
 
 }

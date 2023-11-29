@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
 
+
             android:contentDescription="@string/add"
             android:src="@drawable/addpostbuttton" />
 
@@ -38,8 +39,9 @@
         android:id="@+id/reels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -56,7 +58,6 @@
             android:textColor="@color/black"
             android:text="@string/upload_reels"
             android:textSize="20sp" />
-
 
     </LinearLayout>
 
