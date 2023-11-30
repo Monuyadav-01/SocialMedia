@@ -1,6 +1,7 @@
 package com.example.socialmedia.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,38 +22,31 @@ class MyPostFragment : Fragment() {
 
     private lateinit var binding: FragmentMyPostBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        ActivityPostBinding.inflate(inflater, container, false)
+      binding =   FragmentMyPostBinding.inflate(inflater, container, false)
 
-        var postList = ArrayList<Post>()
-        var adapter = MyPostRvAdapter(requireContext(), postList)
-        binding.postRv.layoutManager =
-            StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        binding.postRv.adapter = adapter
+        val postList = ArrayList<Post>()
+        val adapter = MyPostRvAdapter(requireContext(), postList)
+        binding.rv.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        binding.rv.adapter = adapter
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
             var tempList = arrayListOf<Post>()
-
             for (i in it.documents) {
-                var post: Post = i.toObject<Post>()!!
-
+                val post: Post = i.toObject<Post>()!!
                 tempList.add(post)
             }
             postList.addAll(tempList)
+            adapter.notifyDataSetChanged()
+
         }
 
 
         return binding.root
     }
 
-    companion object {
-
-    }
 }

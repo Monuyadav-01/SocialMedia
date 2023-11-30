@@ -8,7 +8,8 @@ import com.example.socialmedia.Models.Post
 import com.example.socialmedia.databinding.MyPostRvDesignBinding
 import com.squareup.picasso.Picasso
 
-class MyPostRvAdapter(val context: Context, var postList: ArrayList<Post>) :
+
+class MyPostRvAdapter(var context: Context, var postList: ArrayList<Post>) :
     RecyclerView.Adapter<MyPostRvAdapter.ViewHolder>() {
     inner class ViewHolder(var binding: MyPostRvDesignBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -23,7 +24,6 @@ class MyPostRvAdapter(val context: Context, var postList: ArrayList<Post>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        Picasso.get().load(postList[position].postUrl).into(holder.binding.postImage)
+        Picasso.get().load(postList.get(position).postUrl).into(holder.binding.postImage)
     }
 }

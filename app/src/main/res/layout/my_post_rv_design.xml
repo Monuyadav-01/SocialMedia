@@ -8,5 +8,6 @@
         android:id="@+id/post_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/instagram" />
+        app:srcCompat="@drawable/instagram"
+        android:contentDescription="@string/post_photos" />
 </LinearLayout>
