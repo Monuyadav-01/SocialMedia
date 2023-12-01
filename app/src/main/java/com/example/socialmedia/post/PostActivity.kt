@@ -21,7 +21,6 @@ import com.google.firebase.ktx.Firebase
 class PostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostBinding
     private var imageUrl: String? = null
-    private var imageUri: Uri? = null
     private  lateinit var user: User
     private val selectImageLauncher =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -61,6 +60,10 @@ class PostActivity : AppCompatActivity() {
 
         binding.selectImage.setOnClickListener {
             selectImageLauncher.launch(PickVisualMediaRequest())
+        }
+        binding.cancelBtn.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
         }
     }
 }
