@@ -85,9 +85,7 @@ class RegisterActivity : AppCompatActivity() {
             } else {
 
 
-                if (binding.signUpName.editText?.text.toString()
-                        .equals("") || binding.signUpEmail.editText?.text.toString()
-                        .equals("") || binding.signUpPassword.editText?.text.toString().equals("")
+                if (binding.signUpName.editText?.text.toString() == "" || binding.signUpEmail.editText?.text.toString() == "" || binding.signUpPassword.editText?.text.toString().equals("")
                 ) {
                     FancyToast.makeText(
                         this,

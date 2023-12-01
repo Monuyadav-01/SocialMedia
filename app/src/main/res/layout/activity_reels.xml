@@ -6,4 +6,136 @@
     android:layout_height="match_parent"
     tools:context=".post.ReelsActivity">
 
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="New Reel" />
+
+    <Button
+        android:id="@+id/select_video"
+        style="@style/Widget.Material3.Button.IconButton.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#8E0976"
+        android:elevation="30dp"
+        android:text="@string/select_reel"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
+        app:strokeColor="#D12828" />
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/write_a_caption"
+        app:boxStrokeColor="#CD2473"
+        app:layout_constraintEnd_toEndOf="@+id/select_video"
+        app:layout_constraintStart_toStartOf="@+id/select_video"
+        app:layout_constraintTop_toBottomOf="@+id/select_video">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/caption"
+        app:layout_constraintStart_toStartOf="@+id/caption"
+        app:layout_constraintTop_toBottomOf="@+id/caption"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+
+
+            android:contentDescription="@string/add"
+            android:src="@drawable/addpostbuttton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/share_a_post"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:padding="10dp"
+        android:text="@string/your_post_may_appear_in_posts_and_can_be_seen_on_the_posts_may_be_tab_under_your_profile"
+        app:layout_constraintEnd_toEndOf="@+id/post"
+        app:layout_constraintStart_toStartOf="@+id/post"
+        app:layout_constraintTop_toBottomOf="@+id/post" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textColor="#515050"
+            app:strokeColor="#CD1111" />
+
+        <Button
+            android:id="@+id/post_button"
+            style="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/add_post">
+
+        </Button>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
