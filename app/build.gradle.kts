@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.0")
     implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
@@ -64,6 +64,7 @@ dependencies {
     implementation ("com.squareup.picasso:picasso:2.8")
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
     implementation("com.makeramen:roundedimageview:2.3.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 
 
 }

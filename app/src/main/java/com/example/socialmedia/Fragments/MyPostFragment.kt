@@ -31,7 +31,7 @@ class MyPostFragment : Fragment() {
       binding =   FragmentMyPostBinding.inflate(inflater, container, false)
 
         val postList = ArrayList<Post>()
-        val adapter = MyPostRvAdapter(requireContext(), postList)
+        val adapter = MyPostRvAdapter(requireContext(), postList,)
         binding.rv.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         binding.rv.adapter = adapter
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {

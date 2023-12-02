@@ -48,7 +48,7 @@ class ReelsActivity : AppCompatActivity() {
         binding.postButton.setOnClickListener {
             val reel: Reel = Reel(videoUrl, binding.caption.editText?.text.toString())
             Firebase.firestore.collection(REEL).document().set(reel).addOnSuccessListener {
-                Firebase.firestore.collection(Firebase.auth.currentUser!!.uid + REEL).document()
+                Firebase.firestore.collection(Firebase.auth.currentUser!!.email+ REEL).document()
                     .set(reel)
                     .addOnSuccessListener {
                         Log.d("DONE", "DONE WORKED")
