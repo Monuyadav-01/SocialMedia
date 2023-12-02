@@ -29,15 +29,17 @@ fun uploadVideo(
 
     progressDialog.setTitle("Uploading . . . . ")
     progressDialog.show()
+    progressDialog.setCanceledOnTouchOutside(false)
     FirebaseStorage.getInstance().getReference(folderName).child(UUID.randomUUID().toString())
         .putFile(uri).addOnSuccessListener { it ->
             it.storage.downloadUrl.addOnSuccessListener {
                 imageUrl = it.toString()
                 progressDialog.dismiss()
                 callback(imageUrl)
+
             }
         }.addOnSuccessListener {
-            val uploadValue: Long = it.bytesTransferred / it.totalByteCount
+            val uploadValue: Long = (it.bytesTransferred / it.totalByteCount)*100
             progressDialog.setMessage("Uploaded $uploadValue %")
 
         }
