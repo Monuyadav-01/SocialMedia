@@ -32,4 +32,6 @@
     <string name="post_photos">Post Photos</string>
     <string name="select_reel">Select Reel</string>
     <string name="caption">Caption</string>
+    <string name="like">Like</string>
+    <string name="message">Message</string>
 </resources>

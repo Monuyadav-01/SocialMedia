@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/like"
+        android:icon="@drawable/like"
+        android:title="@string/like" />
+    <item
+        android:id="@+id/message"
+        android:icon="@drawable/sendmessage"
+        android:title="@string/message" />
+</menu>

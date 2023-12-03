@@ -3,6 +3,7 @@ package com.example.socialmedia.adapters
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialmedia.Models.Reel
@@ -28,6 +29,7 @@ class ReelAdapter(var context: Context, var reelsList: ArrayList<Reel>) :
         holder.binding.reelCaption.setText(reelsList.get(position).caption)
         holder.binding.videoView.setVideoPath(reelsList.get(position).reelUrl)
         holder.binding.videoView.setOnPreparedListener {
+            holder.binding.progressBar.visibility = View.GONE
             holder.binding.videoView.start()
         }
     }
