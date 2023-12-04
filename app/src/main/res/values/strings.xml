@@ -34,4 +34,5 @@
     <string name="caption">Caption</string>
     <string name="like">Like</string>
     <string name="message">Message</string>
+    <string name="nested_scrollview">Nested scrollView</string>
 </resources>
