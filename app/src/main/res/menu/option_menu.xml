@@ -11,5 +11,5 @@
         android:id="@+id/message"
         android:icon="@drawable/sendmessage"
         android:title="@string/message"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>
