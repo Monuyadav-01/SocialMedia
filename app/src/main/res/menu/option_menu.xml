@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/like"
-        android:icon="@drawable/like"
+        android:icon="@drawable/likedpost"
         android:title="@string/like"
         app:showAsAction="always" />
     <item

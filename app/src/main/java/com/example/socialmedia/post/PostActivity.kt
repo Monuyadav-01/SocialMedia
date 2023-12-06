@@ -12,20 +12,22 @@ import com.example.socialmedia.Models.Post
 import com.example.socialmedia.Models.User
 import com.example.socialmedia.Utils.POST
 import com.example.socialmedia.Utils.POST_FOLDER
+import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.Utils.uploadImage
 import com.example.socialmedia.databinding.ActivityPostBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
 
 class PostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostBinding
     private var imageUrl: String? = null
-    private  lateinit var user: User
+    private lateinit var user: User
     private val selectImageLauncher =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uri?.let {
-                uploadImage(uri, POST_FOLDER) {url->
+                uploadImage(uri, POST_FOLDER) { url ->
                     if (url != null) {
                         binding.selectImage.setImageURI(uri)
                         imageUrl = url
@@ -47,16 +49,34 @@ class PostActivity : AppCompatActivity() {
         }
 
         binding.postButton.setOnClickListener {
-            val post: Post = Post(imageUrl!!, binding.caption.editText?.text.toString())
-            Firebase.firestore.collection(POST).document().set(post).addOnSuccessListener {
-                Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).document().set(post)
-                    .addOnSuccessListener {
-                        Log.d("DONE","DONE WORKED")
-                        startActivity(Intent(this, HomeActivity::class.java))
-                        finish()
+            Firebase.firestore.collection(USER_NODE).document().get()
+                .addOnSuccessListener {
+                    var user = it.toObject<User>()
+
+
+                    val post: Post =
+                        Post(
+                            postUrl = imageUrl!!,
+                            caption = binding.caption.editText?.text.toString(),
+                            name =Firebase.auth.currentUser!!.uid,
+                            System.currentTimeMillis().toString()
+                        )
+
+                    Firebase.firestore.collection(POST).document().set(post).addOnSuccessListener {
+                        Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).document()
+                            .set(post)
+                            .addOnSuccessListener {
+                                Log.d("DONE", "DONE WORKED")
+                                startActivity(Intent(this, HomeActivity::class.java))
+                                finish()
+                            }
                     }
-            }
+                }
         }
+
+
+
+
 
         binding.selectImage.setOnClickListener {
             selectImageLauncher.launch(PickVisualMediaRequest())
