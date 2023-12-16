@@ -33,23 +33,29 @@ class PostAdapter(var context: Context, var postList: ArrayList<Post>) :
     @SuppressLint("CheckResult")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        Firebase.firestore.collection(USER_NODE).document(postList.get(position).uid).get()
-            .addOnSuccessListener {
-                var user = it.toObject<User>()
+        try {
+            Firebase.firestore.collection(USER_NODE).document(postList.get(position).uid).get()
+                .addOnSuccessListener {
+                    var user = it.toObject<User?>()
+                    if (user != null) {
+                        Glide.with(context).load(user.image).placeholder(R.drawable.user_icon)
+                            .into(holder.binding.profileImage)
+                    }
 
+                    holder.binding.name.text = user?.name
 
-                if (user != null) {
-                    Glide.with(context).load(user.image).placeholder(R.drawable.user)
                 }
+        } catch (e: Exception) {
 
-                holder.binding.name.text = user?.name
-
-            }
-        Glide.with(context).load(postList.get(position).postUrl).placeholder(R.drawable.user)
-
+        }
+        Glide.with(context).load(postList.get(position).postUrl).placeholder(R.drawable.loading)
+            .into(holder.binding.post)
         holder.binding.time.text = postList.get(position).time
-
         holder.binding.caption.text = postList.get(position).caption
+
+        holder.binding.like.setOnClickListener {
+            holder.binding.like.setImageResource(R.drawable.likedpost)
+        }
 
 
     }
