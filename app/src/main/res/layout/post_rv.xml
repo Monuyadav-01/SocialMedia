@@ -5,26 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
     android:layout_marginTop="7dp"
-    >
+    android:paddingTop="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#EFD1D1"
+            >
+
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-
                 android:src="@drawable/user"
-                app:layout_constraintEnd_toStartOf="@+id/name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,73 +33,117 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="40dp"
                 android:text="@string/name1"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.275" />
+                app:layout_constraintTop_toTopOf="@+id/profile_image"
+                app:layout_constraintVertical_bias="0.0" />
+
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/name1"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toTopOf="@+id/name" />
-
+                app:layout_constraintEnd_toEndOf="@+id/name"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+
         <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/post"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/loading" />
+            android:layout_height="match_parent"
+            android:src="@drawable/loading" >
+
+
+
+        </ImageView>
 
         <TextView
             android:id="@+id/caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:text="TextView" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginStart="10dp"-->
+        <!--            android:layout_height="match_parent">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/like"-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:src="@drawable/liked"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/share"-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/like"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/like"-->
+        <!--                tools:srcCompat="@drawable/send" />-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/save"-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                tools:srcCompat="@drawable/saveinstagram" />-->
+
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginStart="10dp"
-            android:layout_height="match_parent">
+            android:layout_marginTop="20dp"
+            >
 
             <ImageView
                 android:id="@+id/like"
+
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/liked"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                android:src="@drawable/liked" />
             <ImageView
+
                 android:id="@+id/share"
+                android:layout_marginStart="10dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_constraintStart_toEndOf="@+id/like"
-                app:layout_constraintTop_toTopOf="@+id/like"
-                tools:srcCompat="@drawable/send" />
+                android:src="@drawable/send" />
 
             <ImageView
+
                 android:id="@+id/save"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/saveinstagram" />
+                android:layout_gravity="end"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/saveinstagram"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                />
+
+        </LinearLayout>
 
 
     </LinearLayout>
