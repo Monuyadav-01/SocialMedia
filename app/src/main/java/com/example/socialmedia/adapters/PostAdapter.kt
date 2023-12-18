@@ -10,9 +10,12 @@ import com.bumptech.glide.Glide
 import com.example.socialmedia.Models.Post
 import com.example.socialmedia.Models.User
 import com.example.socialmedia.R
+import com.example.socialmedia.Utils.LIKEPOST
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.databinding.PostRvBinding
 import com.github.marlonlom.utilities.timeago.TimeAgo
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
@@ -38,7 +41,7 @@ class PostAdapter(var context: Context, var postList: ArrayList<Post>) :
         try {
             Firebase.firestore.collection(USER_NODE).document(postList.get(position).uid).get()
                 .addOnSuccessListener {
-                    var user = it.toObject<User?>()
+                    val user = it.toObject<User?>()
                     if (user != null) {
                         Glide.with(context).load(user.image).placeholder(R.drawable.user_icon)
                             .into(holder.binding.profileImage)
@@ -47,30 +50,42 @@ class PostAdapter(var context: Context, var postList: ArrayList<Post>) :
                     holder.binding.name.text = user?.name
 
                 }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
 
         }
         Glide.with(context).load(postList[position].postUrl).placeholder(R.drawable.loading)
             .into(holder.binding.post)
         try {
             val text = TimeAgo.using(postList[position].time.toLong())
-            holder.binding.time.text =text
-        }
-        catch (e : Exception){
-            holder.binding.time.text =null
+            holder.binding.time.text = text
+        } catch (e: Exception) {
+            holder.binding.time.text = null
         }
 
         holder.binding.share.setOnClickListener {
-            val i  = Intent(Intent.ACTION_SEND)
-            i.type  ="text/plain"
-            i.putExtra(Intent.EXTRA_TEXT,postList[position].postUrl)
+            val i = Intent(Intent.ACTION_SEND)
+            i.type = "text/plain"
+            i.putExtra(Intent.EXTRA_TEXT, postList[position].postUrl)
             context.startActivity(i)
         }
 
         holder.binding.caption.text = postList[position].caption
+        var isLike = true
 
         holder.binding.like.setOnClickListener {
-            holder.binding.like.setImageResource(R.drawable.likedpost)
+            var likeCount = 0
+            isLike = if (isLike) {
+                holder.binding.like.setImageResource(R.drawable.liked)
+                likeCount--
+                holder.binding.likeCnt.text = likeCount.toString()
+                false
+            } else {
+                holder.binding.like.setImageResource(R.drawable.likedpost)
+                likeCount++
+                holder.binding.likeCnt.text = likeCount.toString()
+                true
+            }
+
         }
 
 
