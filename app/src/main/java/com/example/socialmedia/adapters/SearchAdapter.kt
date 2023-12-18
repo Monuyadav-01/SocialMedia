@@ -31,7 +31,7 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var isFollow = true
+        var isFollow = false
         Glide.with(context).load(userList[position].image).placeholder(R.drawable.user)
             .into(holder.binding.profileImage)
 
@@ -61,7 +61,7 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
 
             } else {
                 Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
-                    .document(Firebase.auth.currentUser!!.uid)
+                    .document()
                     .set(userList[position])
                 holder.binding.followBtn.text = "UnFollow"
                 isFollow = true
