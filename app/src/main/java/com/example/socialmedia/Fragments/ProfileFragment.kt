@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.socialmedia.Models.User
-import com.example.socialmedia.R
-import com.example.socialmedia.RegisterActivity
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
+import com.example.socialmedia.profileActivities.ProfilePhotoDisplayActivity
+import com.example.socialmedia.profileActivities.UpdateActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
@@ -36,18 +36,21 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         binding.editProfile.setOnClickListener {
-            val intent = Intent(activity, RegisterActivity::class.java)
+            val intent = Intent(activity, UpdateActivity::class.java)
             intent.putExtra("MODE", 1)
             activity?.startActivity(intent)
 
         }
         viewPagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
         viewPagerAdapter.addFragments(MyPostFragment(), "Post")
-        viewPagerAdapter.addFragments(MyReelsFragment(),"Reel")
-
+        viewPagerAdapter.addFragments(MyReelsFragment(), "Reel")
         binding.viewPager.adapter = viewPagerAdapter
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+        binding.profileImage.setOnClickListener {
+            startActivity(Intent(requireContext(), ProfilePhotoDisplayActivity::class.java))
+        }
 
 
 
@@ -71,5 +74,8 @@ class ProfileFragment : Fragment() {
                     Picasso.get().load(user.image).into(binding.profileImage)
                 }
             }
+
+
+
     }
 }

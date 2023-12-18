@@ -1,5 +1,7 @@
 package com.example.socialmedia
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,7 +26,6 @@ class HomeActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
         // Passing each menu ID as a set of Ids because each
-
         navView.setupWithNavController(navController)
     }
 }

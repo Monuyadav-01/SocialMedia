@@ -3,7 +3,7 @@
     <string name="made_by_monu">Made By Monu</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
-    <string name="password">PassWord</string>
+    <string name="password">Password</string>
     <string name="resister">Resister</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
@@ -41,4 +41,5 @@
     <string name="userbio">userbio</string>
     <string name="following">Following</string>
     <string name="_0">0</string>
+    <string name="update_profile">update profile</string>
 </resources>

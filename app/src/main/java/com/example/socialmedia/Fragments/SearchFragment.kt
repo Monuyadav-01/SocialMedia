@@ -60,15 +60,12 @@ class SearchFragment : Fragment() {
                 .addOnSuccessListener {
                     val tempList = ArrayList<User>()
                     userList.clear()
-
                     if (it.isEmpty) {
-
-
                     } else {
                         for (i in it.documents) {
-
-                            if (i.id.toString() .equals(Firebase.auth.currentUser!!.uid.toString())) {
-
+                            if (i.id.toString()
+                                    .equals(Firebase.auth.currentUser!!.uid.toString())
+                            ) {
                             } else {
                                 val user: User = i.toObject<User>()!!
                                 tempList.add(user)
@@ -80,9 +77,9 @@ class SearchFragment : Fragment() {
                 }
         }
 
-            return binding.root
-        }
+        return binding.root
     }
+}
 
 
 

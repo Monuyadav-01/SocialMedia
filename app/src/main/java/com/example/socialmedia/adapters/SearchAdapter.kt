@@ -37,7 +37,7 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
 
         Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
             .whereEqualTo("email", userList[position].email).get().addOnSuccessListener {
-                if (it.documents.size ==0) {
+                if (it.documents.size == 0) {
                     isFollow = false
 
                 } else {
@@ -59,9 +59,9 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
                 holder.binding.followBtn.text = "Follow"
                 isFollow = false
 
-            }
-            else{
-                Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW).document()
+            } else {
+                Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
+                    .document(Firebase.auth.currentUser!!.uid)
                     .set(userList[position])
                 holder.binding.followBtn.text = "UnFollow"
                 isFollow = true

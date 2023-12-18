@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profileActivities.UpdateActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/updated_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/name"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+    <EditText
+        android:id="@+id/updated_bio"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/bio"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/updated_name"
+        app:layout_constraintStart_toStartOf="@+id/updated_name"
+        app:layout_constraintTop_toBottomOf="@+id/updated_name" />
+    <EditText
+        android:id="@+id/update_email"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/email"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/updated_bio"
+        app:layout_constraintStart_toStartOf="@+id/updated_bio"
+        app:layout_constraintTop_toBottomOf="@+id/updated_bio" />
+    <EditText
+        android:id="@+id/update_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/password"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/update_email"
+        app:layout_constraintStart_toStartOf="@+id/update_email"
+        app:layout_constraintTop_toBottomOf="@+id/update_email" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/update_profile"
+        app:layout_constraintEnd_toEndOf="@+id/update_password"
+        app:layout_constraintStart_toStartOf="@+id/update_password"
+        app:layout_constraintTop_toBottomOf="@+id/update_password"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/white"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

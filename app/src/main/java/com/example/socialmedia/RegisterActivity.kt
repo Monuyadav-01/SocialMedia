@@ -49,23 +49,26 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         user = User()
 
-        if (intent.hasExtra("MODE")) {
-            if (intent.getIntExtra("MODE", -1) == 1) {
-                binding.signUpBtn.text = "update profile"
-
-                FirebaseFirestore.getInstance().collection(USER_NODE)
-                    .document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
-                        user = it.toObject<User>()!!
-                        if (!user.image.isNullOrEmpty()) {
-                            Picasso.get().load(user.image).into(binding.profileImage)
-                        }
-                        binding.signUpName.editText?.setText(user.name)
-                        binding.signUpEmail.editText?.setText(user.email)
-                        binding.signUpPassword.editText?.setText(user.password)
-                        binding.signUpBio.editText?.setText(user.bio)
-                    }
-            }
-        }
+//        if (intent.hasExtra("MODE")) {
+//            if (intent.getIntExtra("MODE", -1) == 1) {
+//                binding.signUpBtn.text = "update profile"
+//
+//                FirebaseFirestore.getInstance().collection(USER_NODE)
+//                    .document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
+//                        user = it.toObject<User>()!!
+//                        if (!user.image.isNullOrEmpty()) {
+//                            Picasso.get().load(user.image).into(binding.profileImage)
+//                        }
+//                        binding.signUpName.editText?.setText(user.name)
+//                        binding.signUpEmail.editText?.setText(user.email)
+//                        binding.signUpPassword.editText?.setText(user.password)
+//                        binding.signUpBio.editText?.setText(user.bio)
+//                    }
+//            }
+//            binding.signUpBtn.setOnClickListener {
+//
+//            }
+//        }
 
 
         binding.signUpBtn.setOnClickListener {
