@@ -54,19 +54,15 @@ class RegisterActivity : AppCompatActivity() {
                 binding.signUpBtn.text = "update profile"
 
                 FirebaseFirestore.getInstance().collection(USER_NODE)
-                    .document(Firebase.auth.currentUser!!.uid).get()
-                    .addOnSuccessListener {
-
+                    .document(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
                         user = it.toObject<User>()!!
-
                         if (!user.image.isNullOrEmpty()) {
                             Picasso.get().load(user.image).into(binding.profileImage)
-
                         }
                         binding.signUpName.editText?.setText(user.name)
                         binding.signUpEmail.editText?.setText(user.email)
                         binding.signUpPassword.editText?.setText(user.password)
-
+                        binding.signUpBio.editText?.setText(user.bio)
                     }
             }
         }
@@ -83,9 +79,9 @@ class RegisterActivity : AppCompatActivity() {
                         }
                 }
             } else {
-
-
-                if (binding.signUpName.editText?.text.toString() == "" || binding.signUpEmail.editText?.text.toString() == "" || binding.signUpPassword.editText?.text.toString().equals("")
+                if (binding.signUpName.editText?.text.toString() == "" ||
+                    binding.signUpEmail.editText?.text.toString() == "" ||
+                    binding.signUpPassword.editText?.text.toString() == ""
                 ) {
                     FancyToast.makeText(
                         this,
@@ -104,6 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                             user.name = binding.signUpName.editText?.text.toString()
                             user.email = binding.signUpEmail.editText?.text.toString()
                             user.password = binding.signUpPassword.editText?.text.toString()
+                            user.bio = binding.signUpBio.editText?.text.toString()
 
                             Firebase.firestore.collection(USER_NODE)
                                 .document(FirebaseAuth.getInstance().currentUser!!.uid).set(user)

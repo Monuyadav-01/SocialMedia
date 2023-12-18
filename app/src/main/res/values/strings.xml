@@ -36,4 +36,9 @@
     <string name="message">Message</string>
     <string name="nested_scrollview">Nested scrollView</string>
     <string name="follow">Follow</string>
+    <string name="textview">TextView</string>
+    <string name="follower">Follower</string>
+    <string name="userbio">userbio</string>
+    <string name="following">Following</string>
+    <string name="_0">0</string>
 </resources>

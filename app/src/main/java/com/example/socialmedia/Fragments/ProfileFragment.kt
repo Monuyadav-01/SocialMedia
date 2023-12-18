@@ -42,8 +42,8 @@ class ProfileFragment : Fragment() {
 
         }
         viewPagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
-        viewPagerAdapter.addFragments(MyPostFragment(), "MY POST")
-        viewPagerAdapter.addFragments(MyReelsFragment(), "MY REELS")
+        viewPagerAdapter.addFragments(MyPostFragment(), "Post")
+        viewPagerAdapter.addFragments(MyReelsFragment(),"Reel")
 
         binding.viewPager.adapter = viewPagerAdapter
 
@@ -66,6 +66,7 @@ class ProfileFragment : Fragment() {
             .addOnSuccessListener {
                 val user: User = it.toObject<User>()!!
                 binding.name.text = user.name
+                binding.bio.text = user.bio
                 if (!user.image.isNullOrEmpty()) {
                     Picasso.get().load(user.image).into(binding.profileImage)
                 }

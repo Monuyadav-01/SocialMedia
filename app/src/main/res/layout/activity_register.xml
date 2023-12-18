@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,16 +52,35 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sign_up_bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/bio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/signUpEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpName">
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_bio">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -75,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +107,7 @@
             android:visibility="visible" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sign_up_btn"
