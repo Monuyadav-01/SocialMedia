@@ -9,7 +9,7 @@ import com.example.socialmedia.databinding.MyPostRvDesignBinding
 import com.squareup.picasso.Picasso
 
 
-class MyPostRvAdapter(var context: Context, var postList: ArrayList<Post>) :
+class MyPostRvAdapter(var context: Context, private var postList: ArrayList<Post>) :
     RecyclerView.Adapter<MyPostRvAdapter.ViewHolder>() {
     inner class ViewHolder(var binding: MyPostRvDesignBinding) :
         RecyclerView.ViewHolder(binding.root)

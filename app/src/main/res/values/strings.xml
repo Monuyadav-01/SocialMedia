@@ -42,4 +42,6 @@
     <string name="following">Following</string>
     <string name="_0">0</string>
     <string name="update_profile">update profile</string>
+    <string name="usename">Usename</string>
+    <string name="logout">Logout</string>
 </resources>

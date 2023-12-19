@@ -7,7 +7,11 @@
     android:layout_marginTop="20dp"
     android:orientation="vertical"
     tools:context=".Fragments.ProfileFragment">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
     <TextView
         android:id="@+id/name"
@@ -17,6 +21,14 @@
         android:text="@string/name1"
         android:textSize="20sp"
         android:textStyle="bold" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/downchevron"
+        />
+</LinearLayout>
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,16 +60,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginStart="30dp"
-            android:text="@string/edit_profile"
             android:backgroundTint="#ECE6E6"
+            android:text="@string/edit_profile"
             app:layout_constraintEnd_toEndOf="@+id/bio"
             app:layout_constraintStart_toStartOf="@+id/bio"
             app:layout_constraintTop_toBottomOf="@+id/bio" />
+
 
         <TextView
             android:id="@+id/follower_cnt"
@@ -111,12 +125,10 @@
         android:contentDescription="@string/login" />
 
     <androidx.viewpager.widget.ViewPager
-        android:contentDescription="@string/viewpager"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
+        android:layout_height="match_parent"
+        android:contentDescription="@string/viewpager" />
 
 
 </LinearLayout>

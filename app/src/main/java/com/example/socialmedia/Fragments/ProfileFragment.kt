@@ -11,6 +11,7 @@ import com.example.socialmedia.Utils.FOLLOW
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
+import com.example.socialmedia.profileActivities.LogoutActivity
 import com.example.socialmedia.profileActivities.ProfilePhotoDisplayActivity
 import com.example.socialmedia.profileActivities.UpdateActivity
 import com.google.firebase.auth.ktx.auth
@@ -52,6 +53,9 @@ class ProfileFragment : Fragment() {
 
         binding.profileImage.setOnClickListener {
             startActivity(Intent(requireContext(), ProfilePhotoDisplayActivity::class.java))
+        }
+        binding.name.setOnClickListener {
+            startActivity(Intent(requireContext(), LogoutActivity::class.java))
         }
 
 

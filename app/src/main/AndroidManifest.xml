@@ -25,10 +25,14 @@
         android:theme="@style/Theme.SocialMedia"
         tools:targetApi="31">
         <activity
+            android:name=".profileActivities.LogoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".profileActivities.UpdateActivity"
             android:exported="false" />
-        <activity android:name=".profileActivities.ProfilePhotoDisplayActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".profileActivities.ProfilePhotoDisplayActivity"
+            android:exported="false" />
         <activity
             android:name=".post.ReelsActivity"
             android:exported="false" />
