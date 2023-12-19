@@ -19,11 +19,13 @@
         android:name="com.example.socialmedia.Fragments.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" />
+
     <fragment
         android:id="@+id/navigation_reel"
         android:name="com.example.socialmedia.Fragments.ReelFragment"
         android:label="fragment_reel"
         tools:layout="@layout/fragment_reel" />
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.socialmedia.Fragments.ProfileFragment"

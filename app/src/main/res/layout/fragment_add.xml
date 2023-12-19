@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/add_fragment_dialog_bg"
     tools:context=".Fragments.AddFragment">
 
     <LinearLayout
