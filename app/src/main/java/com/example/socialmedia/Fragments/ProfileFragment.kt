@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.example.socialmedia.Models.User
 import com.example.socialmedia.Utils.FOLLOW
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
-import com.example.socialmedia.profileActivities.LogoutFragment
 import com.example.socialmedia.profileActivities.ProfilePhotoDisplayActivity
 import com.example.socialmedia.profileActivities.UpdateActivity
 import com.google.firebase.auth.ktx.auth
@@ -27,6 +25,7 @@ import com.squareup.picasso.Picasso
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +56,6 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), ProfilePhotoDisplayActivity::class.java))
         }
 
-        binding.name.setOnClickListener {
-           LogoutFragment().show(FragmentActivity().supportFragmentManager,"logout")
-        }
-
-
         return binding.root
     }
 
@@ -84,7 +78,7 @@ class ProfileFragment : Fragment() {
 
 
         val flCnt = ArrayList<User>()
-        Firebase.firestore.collection(Firebase.auth.currentUser!!.email + FOLLOW).get()
+        Firebase.firestore.collection(Firebase.auth.currentUser!!.email+FOLLOW).get()
             .addOnSuccessListener {
                 val followerCountList = ArrayList<User>()
                 for (i in it.documents) {

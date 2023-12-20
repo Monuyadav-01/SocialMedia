@@ -60,17 +60,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_profile"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="30dp"
-            android:backgroundTint="#ECE6E6"
+            android:backgroundTint="#7F000000"
             android:text="@string/edit_profile"
             app:layout_constraintEnd_toEndOf="@+id/bio"
             app:layout_constraintStart_toStartOf="@+id/bio"
-            app:layout_constraintTop_toBottomOf="@+id/bio" />
+            app:layout_constraintTop_toBottomOf="@+id/bio"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            />
+
+
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/logout_user"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginStart="30dp"-->
+<!--            android:backgroundTint="#ECE6E6"-->
+<!--            android:text="@string/logout"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/edit_profile"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/edit_profile"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/edit_profile"-->
+<!--          />-->
 
 
         <TextView
@@ -117,6 +132,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

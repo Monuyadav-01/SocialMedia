@@ -8,6 +8,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.socialmedia.Fragments.ProfileFragment
 import com.example.socialmedia.Models.User
+import com.example.socialmedia.RegisterActivity
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.Utils.USER_PROFILE_FOLDER
 import com.example.socialmedia.Utils.uploadImage
@@ -72,7 +73,6 @@ class UpdateActivity : AppCompatActivity() {
                 binding.updatedBio.setText(user.bio)
 
             }
-
         binding.updateBtn.setOnClickListener {
             user.name = binding.updatedName.text.toString()
             user.bio = binding.updatedBio.text.toString()
@@ -88,13 +88,12 @@ class UpdateActivity : AppCompatActivity() {
                 }
 
         }
-
-
-
         binding.profileImage.setOnClickListener {
             selectImage.launch(PickVisualMediaRequest())
         }
-
-
+        binding.logoutUser.setOnClickListener {
+            Firebase.auth.signOut()
+            startActivity(Intent(this,RegisterActivity::class.java))
+        }
     }
 }
