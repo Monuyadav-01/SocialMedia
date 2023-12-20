@@ -12,6 +12,7 @@ import com.example.socialmedia.Utils.FOLLOW
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
+import com.example.socialmedia.profileActivities.FollowingListActivity
 import com.example.socialmedia.profileActivities.ProfilePhotoDisplayActivity
 import com.example.socialmedia.profileActivities.UpdateActivity
 import com.google.firebase.auth.ktx.auth
@@ -25,7 +26,6 @@ import com.squareup.picasso.Picasso
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +55,12 @@ class ProfileFragment : Fragment() {
         binding.profileImage.setOnClickListener {
             startActivity(Intent(requireContext(), ProfilePhotoDisplayActivity::class.java))
         }
-
+        binding.followingCnt.setOnClickListener {
+            startActivity(Intent(requireContext(), FollowingListActivity::class.java))
+        }
+        binding.text.setOnClickListener {
+            startActivity(Intent(requireContext(), FollowingListActivity::class.java))
+        }
         return binding.root
     }
 
@@ -78,7 +83,7 @@ class ProfileFragment : Fragment() {
 
 
         val flCnt = ArrayList<User>()
-        Firebase.firestore.collection(Firebase.auth.currentUser!!.email+FOLLOW).get()
+        Firebase.firestore.collection(Firebase.auth.currentUser!!.email + FOLLOW).get()
             .addOnSuccessListener {
                 val followerCountList = ArrayList<User>()
                 for (i in it.documents) {

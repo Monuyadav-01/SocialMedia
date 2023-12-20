@@ -14,7 +14,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
+class SearchAdapter(val context: Context, private val userList: ArrayList<User>) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
 
@@ -34,19 +34,16 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
         var isFollow = false
         Glide.with(context).load(userList[position].image).placeholder(R.drawable.user)
             .into(holder.binding.profileImage)
-
         Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
             .whereEqualTo("email", userList[position].email).get().addOnSuccessListener {
                 if (it.documents.size == 0) {
                     isFollow = false
-
                 } else {
                     holder.binding.followBtn.text = "UnFollow"
                     isFollow = true
                 }
             }
         holder.binding.followBtn.setOnClickListener {
-
             if (isFollow) {
                 Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
                     .whereEqualTo("email", userList[position].email).get().addOnSuccessListener {
@@ -58,15 +55,12 @@ class SearchAdapter(val context: Context, val userList: ArrayList<User>) :
                     }
                 holder.binding.followBtn.text = "Follow"
                 isFollow = false
-
             } else {
-                Firebase.firestore.collection(Firebase.auth.currentUser?.email!! + FOLLOW)
-                    .document()
+                Firebase.firestore.collection(Firebase.auth.currentUser!!.email + FOLLOW).document()
                     .set(userList[position])
-                holder.binding.followBtn.text = "UnFollow"
+                holder.binding.followBtn.text = "unfollow"
                 isFollow = true
             }
-
         }
         holder.binding.userName.text = userList[position].name
     }

@@ -70,23 +70,14 @@ class PostAdapter(var context: Context, var postList: ArrayList<Post>) :
         }
 
         holder.binding.caption.text = postList[position].caption
-        var isLike = true
-
         holder.binding.like.setOnClickListener {
-            var likeCount = 0
-            isLike = if (isLike) {
-                holder.binding.like.setImageResource(R.drawable.liked)
-                likeCount--
-                holder.binding.likeCnt.text = likeCount.toString()
-                false
-            } else {
-                holder.binding.like.setImageResource(R.drawable.likedpost)
-                likeCount++
-                holder.binding.likeCnt.text = likeCount.toString()
-                true
-            }
+
+
+            holder.binding.like.setImageResource(R.drawable.likedpost)
 
         }
+
+
 
 
     }
