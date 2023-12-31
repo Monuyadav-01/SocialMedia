@@ -143,6 +143,7 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabIndicator="@null"
         android:contentDescription="@string/login" />
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

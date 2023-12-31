@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import com.example.socialmedia.Models.User
 import com.example.socialmedia.Utils.FOLLOW
 import com.example.socialmedia.Utils.USER_NODE
 import com.example.socialmedia.adapters.ViewPagerAdapter
 import com.example.socialmedia.databinding.FragmentProfileBinding
+import com.example.socialmedia.dialog.bottomSheetLogoutDialog
 import com.example.socialmedia.profileActivities.FollowingListActivity
 import com.example.socialmedia.profileActivities.ProfilePhotoDisplayActivity
 import com.example.socialmedia.profileActivities.UpdateActivity
@@ -61,12 +61,12 @@ class ProfileFragment : Fragment() {
         binding.text.setOnClickListener {
             startActivity(Intent(requireContext(), FollowingListActivity::class.java))
         }
+
+
+
         return binding.root
     }
 
-    companion object {
-
-    }
 
     override fun onStart() {
         super.onStart()
@@ -92,6 +92,10 @@ class ProfileFragment : Fragment() {
                 flCnt.addAll(followerCountList)
                 binding.followingCnt.text = flCnt.size.toString()
             }
+
+        binding.name.setOnClickListener {
+            bottomSheetLogoutDialog()
+        }
 
     }
 }
